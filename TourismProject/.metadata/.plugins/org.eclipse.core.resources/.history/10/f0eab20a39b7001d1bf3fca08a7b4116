@@ -1,0 +1,39 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import com.tourism.entity.Place;
+
+public class PlaceServiceImp implements  PlaceService{
+
+	@Override
+	public Place addPlace(Place h) {
+
+		return null;
+	}
+
+	@Override
+	public List<Place> getAllPlace() {
+		
+		return null;
+	}
+
+	@Override
+	public Place getPlaceById(long Place_id) {
+	
+		return null;
+	}
+
+	@Override
+	public Place updatePlace(Place h) {
+
+		return null;
+	}
+
+	@Override
+	public String deletePlace(long Place_id) {
+	
+		return null;
+	}
+
+}

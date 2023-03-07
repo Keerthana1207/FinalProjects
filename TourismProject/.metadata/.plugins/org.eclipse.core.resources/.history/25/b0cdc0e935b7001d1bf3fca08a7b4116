@@ -1,0 +1,46 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tourism.dao.HotelRepository;
+import com.tourism.entity.Hotel;
+@Service
+public class HotelServiceImp implements HotelService{
+	@Autowired
+	HotelRepository dao;
+	
+	@Override
+	public Hotel addHotel(Hotel h) {
+		System.out.println("Hotel has added Succesfully" +h);
+		
+		return dao.save(h);
+	}
+
+	@Override
+	public List<Hotel> getAllHotel() {
+
+		return null;
+	}
+
+	@Override
+	public Hotel getHotelById(int hotel_id) {
+	
+		return null;
+	}
+
+	@Override
+	public Hotel updateHotel(Hotel h) {
+		
+		return null;
+	}
+
+	@Override
+	public String deleteHotel(int hotel_id) {
+	
+		return null;
+	}
+
+}

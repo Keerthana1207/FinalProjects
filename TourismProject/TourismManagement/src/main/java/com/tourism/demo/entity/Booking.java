@@ -1,0 +1,159 @@
+package com.tourism.demo.entity;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Range;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@SequenceGenerator(name = "generator1", sequenceName = "gen1", initialValue = 100)
+public class Booking {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "booking_id")
+	private Long booking_id;
+
+	public enum RoomType {
+		STANDARD, SUPERIOR, DELUXE
+	}
+
+
+	private Date date;
+
+	@Column(name = "PASSENGER_COUNT", length = 2)
+	@NotNull
+	@Range(min = 1, max = 12)
+	private int passengerCount = 1;
+
+	@Column(name = "roomType")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private RoomType roomType = RoomType.STANDARD;
+
+	@Column(name = "day")
+	@NotNull
+
+	private int day;
+
+	/*
+	 * @Column(name = "booking_date") private Date booking_date;
+	 */
+	
+	@ManyToOne(targetEntity=User.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="tour_userid",insertable=false,updatable=false)
+	private User userjoin;
+		  	
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookingjoin",fetch =
+	 * FetchType.EAGER) private Set<Ticket> tickets;
+	 * 
+	 * 
+	 * 
+	 * @OneToMany(cascade = CascadeType.ALL,mappedBy = "bookingjoin",fetch =
+	 * FetchType.EAGER) private Set<Place> places;
+	 * 
+	 * 
+	 * @OneToMany(cascade = CascadeType.ALL,mappedBy = "bookingjoin",fetch =
+	 * FetchType.EAGER) private Set<TravelAgent> agents;
+	 */
+	
+	public Booking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public Booking(Long booking_id, Date date, @NotNull @Range(min = 1, max = 12) int passengerCount,
+			@NotNull RoomType roomType, @NotNull int  day , @NotNull int price, Date booking_date,
+			User userjoin) {
+		super();
+		this.booking_id = booking_id;
+		this.date = date;
+		this.passengerCount = passengerCount;
+		this.roomType = roomType;
+		this.day = day;
+	
+		
+		
+	}
+
+
+	public User getUserjoin() {
+		return userjoin;
+	}
+
+
+	public void setUserjoin(User userjoin) {
+		this.userjoin = userjoin;
+	}
+
+
+	
+
+	public Long getBooking_id() {
+		return booking_id;
+	}
+
+	public void setBooking_id(Long booking_id) {
+		this.booking_id = booking_id;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getPassengerCount() {
+		return passengerCount;
+	}
+
+	public void setPassengerCount(int i) {
+		this.passengerCount = i;
+	}
+
+	public RoomType getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(RoomType roomType) {
+		this.roomType = roomType;
+	}
+
+
+	public int getDay() {
+		return day;
+	}
+
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+
+
+
+
+
+
+}

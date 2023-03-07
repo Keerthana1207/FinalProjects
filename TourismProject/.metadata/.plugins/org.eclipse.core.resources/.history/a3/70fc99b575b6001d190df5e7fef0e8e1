@@ -1,0 +1,9 @@
+package com.tourism.service;
+
+public interface BookingService {
+	public Booking addEmployee(Employee e);
+	public List<Employee> getAllEmployee();	
+	public Employee getEmployeeById(int id);	
+	public Employee updateEmployee(Employee e);
+	public String deleteEmployee(int id);
+}

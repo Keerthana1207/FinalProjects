@@ -1,0 +1,119 @@
+package com.tourism.entity;
+
+import java.security.Timestamp;
+import java.util.Date;
+import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Range;
+
+public class Ticket {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "seat_No")
+	private Long seat_No;
+	
+	@Column(name ="date")
+	@NotNull
+	private Date date;
+
+	@Column(name = "created_at", updatable = false)
+	@PastOrPresent
+	private Timestamp createdTimesatmp=null;
+
+	@Column(name = "last_update")
+	@PastOrPresent
+	private Timestamp updateTimestamp=null;
+
+	public Timestamp getCreatedTimesatmp() {
+	return createdTimesatmp;	 
+	}
+	
+	@ManyToOne(targetEntity=Booking.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="b_id",insertable = false,updatable = false)
+	private Transport bookingid;
+	
+	@ManyToOne(targetEntity=Transport.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="trans_id",insertable = false,updatable = false)
+	private Transport transport;
+
+	public Ticket() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Ticket(Long seat_No, @NotNull Date date, @PastOrPresent Timestamp createdTimesatmp,
+			@PastOrPresent Timestamp updateTimestamp, Transport bookingid, Transport transport) {
+		super();
+		this.seat_No = seat_No;
+		this.date = date;
+		this.createdTimesatmp = createdTimesatmp;
+		this.updateTimestamp = updateTimestamp;
+		this.bookingid = bookingid;
+		this.transport = transport;
+	}
+
+	public Long getSeat_No() {
+		return seat_No;
+	}
+
+	public void setSeat_No(Long seat_No) {
+		this.seat_No = seat_No;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Timestamp getUpdateTimestamp() {
+		return updateTimestamp;
+	}
+
+	public void setUpdateTimestamp(Timestamp updateTimestamp) {
+		this.updateTimestamp = updateTimestamp;
+	}
+
+	public Transport getBookingid() {
+		return bookingid;
+	}
+
+	public void setBookingid(Transport bookingid) {
+		this.bookingid = bookingid;
+	}
+
+	public Transport getTransport() {
+		return transport;
+	}
+
+	public void setTransport(Transport transport) {
+		this.transport = transport;
+	}
+
+	public void setCreatedTimesatmp(Timestamp createdTimesatmp) {
+		this.createdTimesatmp = createdTimesatmp;
+	}
+	
+	
+
+}

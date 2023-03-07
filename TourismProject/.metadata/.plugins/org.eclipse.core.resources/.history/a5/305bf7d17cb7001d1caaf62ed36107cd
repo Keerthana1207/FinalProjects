@@ -1,0 +1,41 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.tourism.demoentity.Ticket;
+@Service
+public class TicketServiceImp implements TicketService{
+
+	@Override
+	public Ticket addTicket(Ticket h) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Ticket> getAllTicket() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ticket getTicketById(long ticket_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ticket updateTicket(Ticket h) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteTicket(long ticket_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

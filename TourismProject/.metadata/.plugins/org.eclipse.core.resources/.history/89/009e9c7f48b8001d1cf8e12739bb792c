@@ -1,0 +1,123 @@
+package com.tourism.entity;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+import java.util.Set;
+import org.hibernate.validator.constraints.Length;
+import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Range;
+
+
+@Entity
+@SequenceGenerator(name = "generator1", sequenceName = "gen1", initialValue = 1000)
+public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	protected Long user_id;		
+
+	@Column(name = "name")
+	@NotBlank(message = "Name is mandatory")
+	protected String name;	
+	
+	
+	public enum Gender {
+	MALE, FEMALE
+
+	}
+	
+	@Column
+	@NotNull
+	@Past
+	private Date dob;
+	
+	@Column(name = "phoneNumber",length = 10, unique = true)
+	private String phoneNumber;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "gender")
+	private Gender gender;
+
+	@Past
+	@Column(name = "birth_of_date")
+	private Date birthOfDate;
+	
+	@Column(unique = true)
+	@NotNull
+	@Email
+	protected String email;
+		
+	@Column
+	@NotNull
+	private String password;
+	
+	@Column(name = "street")
+	@NotNull
+	private String street;
+	
+	@Column(name = "district")
+	@NotNull
+	private String district;
+	
+
+	@Column(name = "state")
+	@NotNull
+	@Length(min = 2, max = 10)
+	private String state;
+	
+	@Column(name = "zip" , length = 6)
+	@NotNull
+	@Pattern(regexp="(^$|[0-9]{6})")
+	private int zip;
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(Long user_id, @NotBlank(message = "Name is mandatory") String name, @NotNull @Past Date dob,
+			String phoneNumber, Gender1 gender, LocalDate birthOfDate, Set<Booking> bookings,
+			@NotNull @Email String email, @NotNull String password, @NotNull String street, @NotNull String district,
+			@NotNull @Length(min = 2, max = 10) String state, @NotNull @Pattern(regexp = "(^$|[0-9]{6})") int zip) {
+		super();
+		this.user_id = user_id;
+		this.name = name;
+		this.dob = dob;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.birthOfDate = birthOfDate;
+		this.bookings = bookings;
+		this.email = email;
+		this.password = password;
+		this.street = street;
+		this.district = district;
+		this.state = state;
+		this.zip = zip;
+	}
+
+
+	@OneToMany(mappedBy="userjoin")
+	Set<Booking> bookings;
+
+}

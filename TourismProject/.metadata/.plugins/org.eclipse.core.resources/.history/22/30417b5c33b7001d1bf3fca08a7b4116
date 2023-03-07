@@ -1,0 +1,38 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import com.tourism.entity.Hotel;
+
+public class HotelServiceImp implements HotelService{
+
+	@Override
+	public Hotel addHotel(Hotel h) {
+		return null;
+	}
+
+	@Override
+	public List<Hotel> getAllHotel() {
+
+		return null;
+	}
+
+	@Override
+	public Hotel getHotelById(int hotel_id) {
+	
+		return null;
+	}
+
+	@Override
+	public Hotel updateHotel(Hotel h) {
+		
+		return null;
+	}
+
+	@Override
+	public String deleteHotel(int hotel_id) {
+	
+		return null;
+	}
+
+}

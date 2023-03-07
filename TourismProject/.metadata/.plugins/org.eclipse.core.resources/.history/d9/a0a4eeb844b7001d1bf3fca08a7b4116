@@ -1,0 +1,39 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import com.tourism.entity.TravelAgent;
+
+public class TravelAgentServiceImp implements TravelAgentService{
+
+	@Override
+	public TravelAgent addTravelAgent(TravelAgent h) {
+
+		return null;
+	}
+
+	@Override
+	public List<TravelAgent> getAllTravelAgentAgentAgentAgentAgent() {
+		
+		return null;
+	}
+
+	@Override
+	public TravelAgent getTravelAgentById(int TravelAgentAgentAgentAgentAgent_id) {
+		
+		return null;
+	}
+
+	@Override
+	public TravelAgent updateTravelAgentAgentAgentAgentAgent(TravelAgent h) {
+	
+		return null;
+	}
+
+	@Override
+	public String deleteTravelAgentAgentAgentAgentAgent(int TravelAgentAgentAgentAgentAgent_id) {
+		
+		return null;
+	}
+
+}

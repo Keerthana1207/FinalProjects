@@ -1,0 +1,10 @@
+package com.tourism.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.tourism.entity.Place;
+
+
+public interface PlaceRepository extends JpaRepository<Place, Long> {
+
+}

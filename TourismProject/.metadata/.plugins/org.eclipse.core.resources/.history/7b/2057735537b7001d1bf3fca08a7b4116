@@ -1,0 +1,14 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import com.tourism.entity.Place;
+
+
+public longerface PlaceService {
+	public  Place addPlace( Place h);
+	public List<Place> getAllPlace();		
+	public  Place getPlaceById(long Place_id);	
+	public  Place updatePlace(Place h);
+	public String deletePlace(long Place_id);
+}

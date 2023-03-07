@@ -1,0 +1,67 @@
+package com.tourism.entity;
+
+import org.hibernate.validator.constraints.Length;
+
+import jakarta.persistence.Column;
+
+//import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Table(name="Hotel_tbl")
+
+
+public class Hotel {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	
+	@Column(name ="hotel_id")
+	 private int hotel_id;
+	
+	@Column(name ="hotel_name")
+	 private String hotel_name;
+	
+	@Column(name = "street")
+	@NotNull
+	private String street;
+	
+	@Column(name = "district")
+	@NotNull
+	private String district;
+	
+
+	@Column(name = "state")
+	@NotNull
+	@Length(min = 2, max = 2)
+	private String state;
+	
+	@Column(name = "zip" , length = 6)
+	@NotNull
+	@Pattern(regexp="(^$|[0-9]{6})")
+	private int zip;
+	
+	@Column(name ="hotel_desc")
+	 private String hotel_desc;
+	
+	@Column(name ="hotel_fair")
+	 private String hotel_fair;
+	
+}

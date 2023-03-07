@@ -1,0 +1,9 @@
+package com.tourism.demo.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.tourism.demo.entity.Package;
+
+public interface UserReposotory extends JpaRepository<Package, Long> {
+
+}

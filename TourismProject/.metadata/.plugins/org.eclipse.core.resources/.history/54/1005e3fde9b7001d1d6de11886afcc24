@@ -1,0 +1,59 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.tourism.demo.dao.PackageRepository;
+import com.tourism.demo.entity.Package;
+@Service
+public class PackageServiceImp implements PackageService {
+
+	@Autowired
+	PackageRepository dao;
+
+	@Override
+	public java.lang.Package addPackage(java.lang.Package pa) {
+		System.out.println("Package added Succesfully "+pa);
+		
+	return null;
+	}
+
+
+	@Override
+	public List<java.lang.Package> getAllPackage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public java.lang.Package getPackageById(long Package_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public java.lang.Package updatePackage(java.lang.Package pa) {
+		Package existspkg = dao.findById(pa.getP).orElse(null);
+		return null;
+	}
+
+	
+
+	@Override
+	public String deletePackage(long Package_id) {
+		Package exists_pkgID = dao.findById(Package_id).orElse(null);
+		if(exists_pkgID!=null) {
+			dao.deleteById(Package_id);
+			return "Package deleted";
+		}
+		else {
+			return "Package does not existing!!";
+		}
+		
+	}
+
+
+
+}

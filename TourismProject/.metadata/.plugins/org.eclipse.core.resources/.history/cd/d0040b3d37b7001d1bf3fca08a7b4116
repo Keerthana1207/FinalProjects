@@ -1,0 +1,39 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import com.tourism.entity.Ticket;
+
+public class TicketServiceImp implements TicketService{
+
+	@Override
+	public Ticket addTicket(Ticket h) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Ticket> getAllTicket() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ticket getTicketById(int ticket_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ticket updateTicket(Ticket h) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteTicket(int ticket_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

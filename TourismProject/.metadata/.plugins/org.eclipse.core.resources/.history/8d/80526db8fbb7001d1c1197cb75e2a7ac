@@ -1,0 +1,13 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+
+public interface PackageService  {
+	public  Package addPackage( Package pa);
+	public List<Package> getAllPackage();		
+	public  Package getPackageById(long Package_id);	
+	public  Package updatePackage(Package pa);
+	public String deletePackage(long Package_id);
+	
+}

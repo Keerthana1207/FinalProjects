@@ -1,0 +1,42 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            
+            <div class="row">
+              <table class='table'>
+                <thead>
+                    <tr class='table-dark'>
+                        <th>Hotel_name</th>
+                        <th>State</th>
+                        <th>District</th>
+                        <th>Zip</th>
+                        <th>Hotel_Fair</th>
+                    </tr>
+            
+                </thead>
+                <tr >
+                    <td>Royal hotel</td>
+                    <td>JammuKashmir</td>
+                    <td>Jammu</td>
+                    <td>675756</td>
+                    <td>18754</td>
+                </tr>
+                <tr *ngFor="let thotel of hotels">
+                    <td>{{thotel.hotel_name}}</td>
+                    <td>{{thotel.state}}</td>
+                    <td>{{thotel.district}}</td>
+                    <td>{{thotel.zip}}</td>
+                    <td>{{thotel.hotel_fair}}</td>
+                    <button type="button" class="btn btn-md btn-success" (click)= "bookhotel()">Book Hotel</button>&nbsp;&nbsp;
+
+                    </tr>
+                </table>
+                </div>
+              
+    
+            </div>
+        </div>
+    </div>
+    
+     
+

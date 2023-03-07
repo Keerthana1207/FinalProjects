@@ -1,0 +1,16 @@
+package com.tourism.service;
+
+import java.util.List;
+import com.tourism.entity.Hotel;
+
+
+public interface HotelService {
+	public  Hotel addHotel( Hotel h);
+	public List<Hotel> getAllHotel();		
+	public  Hotel getHotelById(int hotel_id);	
+	public  Hotel updateHotel(Hotel h);
+	public String deleteHotel(int hotel_id);
+	//public void deleteHotel(int hotel_id);
+	
+	
+}

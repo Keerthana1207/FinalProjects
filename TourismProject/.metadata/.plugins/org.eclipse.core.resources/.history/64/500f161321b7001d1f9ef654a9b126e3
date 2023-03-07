@@ -1,0 +1,77 @@
+package com.tourism.entity;
+
+import java.sql.Date;
+import org.hibernate.annotations.Check;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Range;
+
+@Entity
+public class Payment{
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)	
+	@Column(name="Payment_id")
+	private long payment_id;
+	public enum PaymentMode{
+		CARD,
+		UPI,
+		INTERNET_BANKING,
+		WALLET
+	}
+	
+	public enum PaymentStatus{
+		SUCCESS,
+		PENDING,
+		FAILED
+	}
+	
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "up_id")
+	private Booking booking;
+	
+	
+	@Column(name="mode")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private PaymentMode mode= PaymentMode.CARD;
+	
+	
+	@Column(name = "net_charge")
+	@NotNull
+	private int netCharge=0;
+	
+	@Column(name ="gst")
+	@NotNull
+	private int gst=0;
+	
+	@Column(name = "txn_id")
+	@NotNull
+	private String transactionId;	
+
+	@NotNull
+	@PastOrPresent
+	private Date date;
+	
+	@Column(name="status")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private PaymentStatus status;
+	
+}

@@ -1,0 +1,113 @@
+package com.tourism.demo.entity;
+
+//import java.util.Date;
+
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity
+
+public class Transport {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)	
+	@Column(name ="transport_id")
+	private int transportation_id;
+	
+	@Column(name ="transport_tour_id")
+	private int transport_tour_id;
+	
+	@Column(name ="transport_name")
+	private String transport_name;
+	
+	@Column(name ="vtype")
+	private String vtype;
+	
+	@Column(name ="trans_desc")
+	private String trans_desc;
+
+	/*
+	 * @OneToMany(mappedBy="transport") private Set<Ticket>ticket;
+	 * 
+	 */
+	public Transport() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Transport(int transportation_id, int transport_tour_id, String transport_name, String vtype,
+			String trans_desc, Set<Ticket> ticket) {
+		super();
+		this.transportation_id = transportation_id;
+		this.transport_tour_id = transport_tour_id;
+		this.transport_name = transport_name;
+		this.vtype = vtype;
+		this.trans_desc = trans_desc;
+	
+	}
+
+
+	public int getTransportation_id() {
+		return transportation_id;
+	}
+
+
+	public void setTransportation_id(int transportation_id) {
+		this.transportation_id = transportation_id;
+	}
+
+
+	public int getTransport_tour_id() {
+		return transport_tour_id;
+	}
+
+
+	public void setTransport_tour_id(int transport_tour_id) {
+		this.transport_tour_id = transport_tour_id;
+	}
+
+
+	public String getTransport_name() {
+		return transport_name;
+	}
+
+
+	public void setTransport_name(String transport_name) {
+		this.transport_name = transport_name;
+	}
+
+
+	public String getVtype() {
+		return vtype;
+	}
+
+
+	public void setVtype(String vtype) {
+		this.vtype = vtype;
+	}
+
+
+	public String getTrans_desc() {
+		return trans_desc;
+	}
+
+
+	public void setTrans_desc(String trans_desc) {
+		this.trans_desc = trans_desc;
+	}
+
+
+
+	
+	
+	
+	
+}

@@ -1,0 +1,67 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tourism.demo.dao.UserRepository;
+import com.tourism.demo.entity.User;
+@Service
+public class UserServiceImp implements UserService{
+
+	@Autowired 
+	
+	UserRepository dao;
+	
+	@Override
+	public User addUser(User u) {
+		System.out.println("User added Succesfully "+u);
+	    
+		u.setName(u.getName());
+		u.setDob(u.getDob());
+		u.setGender(u.getGender());
+		u.setPhoneNumber(u.getPhoneNumber());
+		u.setBirthOfDate(null);
+		
+		
+		
+		
+		return dao.save(u);
+	}
+
+	@Override
+	public List<User> getAllUser() {		
+		return dao.findAll();
+	}
+
+	@Override
+	public User getUserById(long User_id) {		
+		return this.dao.findById(User_id).orElse(null);
+	}
+
+	@Override
+	public User updateUser(User u) {
+		User existingUser=dao.findById(u.getUser_id()).orElse(null);
+		return dao.save(existingUser);
+	}
+
+	@Override
+	public String deleteUser(long User_id) {
+		User existsID=dao.findById(User_id).orElse(null);
+		if(existsID!=null)
+		{
+		dao.deleteById(User_id);
+		return "User deleted!!";
+		}
+		else
+		{
+		return "User does not exist!!";
+		}
+	
+	}
+
+	
+	
+
+}

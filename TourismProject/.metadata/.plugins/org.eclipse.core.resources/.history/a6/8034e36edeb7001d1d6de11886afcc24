@@ -1,0 +1,60 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tourism.demo.dao.PlaceRepository;
+import com.tourism.demo.entity.Place;
+@Service
+public class PlaceServiceImp implements  PlaceService{
+
+	@Autowired
+	PlaceRepository dao;
+	@Override
+	
+	public Place addPlace(Place p) {
+		System.out.println("place added Succesfully "+p);
+		p.setPlace_name(p.getPlace_name());
+		p.setStreet(p.getStreet());
+		p.setDistrict(p.getDistrict());
+		p.setZip(p.getZip());
+		p.setStreet(p.getStreet());
+		return dao.save(p);
+	}
+
+	@Override
+	public List<Place> getAllPlace() {
+		
+		return null;
+	}
+
+	@Override
+	public Place getPlaceById(long Place_id) {
+	
+		return null;
+	}
+
+	@Override
+	public Place updatePlace(Place p) {
+
+		return null;
+	}
+
+	@Override
+	public String deletePlace(long Place_id) {
+		Place existsID=dao.findById(Place_id).orElse(null);
+		if(existsID!=null)
+		{
+		dao.deleteById(id);
+		return "Employee deleted!!";
+		}
+		else
+		{
+		return "Employee does not exist!!";
+		}
+		
+	}
+
+}

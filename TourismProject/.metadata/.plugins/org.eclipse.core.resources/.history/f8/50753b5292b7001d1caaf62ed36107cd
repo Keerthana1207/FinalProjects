@@ -1,0 +1,5 @@
+package com.tourism.demo.dao;
+
+public interface TransportRepository {
+
+}

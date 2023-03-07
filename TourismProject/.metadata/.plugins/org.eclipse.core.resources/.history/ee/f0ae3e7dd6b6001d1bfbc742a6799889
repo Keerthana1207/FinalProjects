@@ -1,0 +1,46 @@
+package com.tourism.entity;
+
+import java.security.Timestamp;
+import java.util.Date;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
+public class Ticket {
+
+
+	@Column(name = "seat_No")
+	private Long seat_No;
+	
+	@Column(name ="date")
+	@NotNull
+	private Date date;
+
+
+	@Column(name = "created_at", updatable = false)
+	@PastOrPresent
+	private Timestamp createdTimesatmp=null;
+
+	@Column(name = "last_update")
+	@PastOrPresent
+	private Timestamp updateTimestamp=null;
+
+	public Timestamp getCreatedTimesatmp() {
+	return createdTimesatmp;	 
+	}
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "booking_id", referencedColumnName = "id")
+	private Booking bookingId;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "transport_id", referencedColumnName = "id")
+	private Transport transportId;
+	
+
+}

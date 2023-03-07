@@ -1,0 +1,53 @@
+package com.tourism.entity;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.validation.constraints.PastOrPresent;
+
+@Entity
+public class MetaData implements Serializable {
+
+
+@Column(name = "created_at", updatable = false)
+  @PastOrPresent
+  private Timestamp createdTimesatmp=null;
+  @Column(name = "last_update")
+  @PastOrPresent
+  private Timestamp updateTimestamp=null;
+
+
+  public MetaData(){}
+
+  public Timestamp getCreatedTimesatmp() {
+    return createdTimesatmp;
+  }
+
+  @PrePersist
+  public void setCreatedTimesatmp() {
+    if(this.createdTimesatmp==null){
+      this.createdTimesatmp = new Timestamp(new Date().getTime());
+      this.updateTimestamp=this.createdTimesatmp;
+    }
+  }
+
+  public Timestamp getUpdateTimestamp() {
+    return updateTimestamp;
+  }
+  
+  @PreUpdate
+  public void setUpdateTimestamp() {
+    this.updateTimestamp = new Timestamp(new Date().getTime());
+  }
+  
+  @Override
+  public String toString() {
+    return "MetaData [createdTimesatmp=" + createdTimesatmp + ", updateTimestamp=" + updateTimestamp + "]";
+  }
+ 
+  
+}

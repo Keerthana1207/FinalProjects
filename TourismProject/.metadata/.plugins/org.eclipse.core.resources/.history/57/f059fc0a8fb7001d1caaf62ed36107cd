@@ -1,0 +1,14 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import com.tourism.demo.entity.TravelAgent;
+
+
+public interface TravelAgentService {
+	public  TravelAgent addTravelAgent( TravelAgent h);
+	public List<TravelAgent> getAllTravelAgentAgentAgentAgentAgent();		
+	public  TravelAgent getTravelAgentById(int TravelAgentAgentAgentAgentAgent_id);	
+	public  TravelAgent updateTravelAgentAgentAgentAgentAgent(TravelAgent h);
+	public String deleteTravelAgentAgentAgentAgentAgent(int TravelAgentAgentAgentAgentAgent_id);
+}

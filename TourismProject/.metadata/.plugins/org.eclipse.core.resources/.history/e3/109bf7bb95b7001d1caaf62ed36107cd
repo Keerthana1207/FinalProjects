@@ -1,0 +1,39 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import com.tourism.demo.entity.Transport;
+
+public class TransportServiceImp implements TransportService {
+
+	@Override
+	public Transport addTransport(Transport ts) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Transport> getAllTransport() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Transport getTransportById(long Transport_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Transport updateTransport(Transport ts) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteTransport(long Transport_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

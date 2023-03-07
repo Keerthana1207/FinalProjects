@@ -1,0 +1,67 @@
+package com.tourism.entity;
+
+import org.hibernate.validator.constraints.Length;
+import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Range;
+
+@Entity
+
+
+public class TravelAgent {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	
+	@Column(name ="travel_agent_id")
+	 private int travel_agent_id;
+	 
+	@Column(name ="travel_agent_name")
+	 private String travel_agent_name;
+	 
+	@Column(name ="travel_agent_mobile")
+	 private Long travel_agent_mobile;
+	 
+	@Column(name ="travel_agent_email")
+	 private String travel_agent_email;
+	 
+	@Column(name ="travel_agent_password")
+	 private int travel_agent_password;
+	 	 
+	 @Column(name = "street")
+	 @NotNull
+	 private String street;
+		
+	 @Column(name = "district")
+	 @NotNull
+	 private String district;
+		
+
+	 @Column(name = "state")
+	 @NotNull
+	 @Length(min = 2, max = 2)
+	 private String state;
+		
+	@Column(name = "zip" , length = 6)
+	@NotNull
+	@Pattern(regexp="(^$|[0-9]{6})")
+	private int zip;	
+	
+}

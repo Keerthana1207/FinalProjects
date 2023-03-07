@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            
+            <div class="row">
+              <table class='table'>
+                <thead>
+                    <tr class='table-dark'>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>ContactNum</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                    </tr>
+            
+                </thead>
+                <tr >
+                    <td>Smithi</td>
+                    <td>Mumbai</td>
+                    <td>985645654</td>
+                    <td>Female</td>
+                    <td>smithi83@gmail.com</td>
+                </tr>
+                <tr *ngFor="let tuserUser of users">
+                    <td>{{tuserUser.name}}</td>
+                    <td>{{tuserUser.city}}</td>
+                    <td>{{tuserUser.phoneNumber}}</td>
+                    <td>{{tuserUser.gender}}</td>
+                    <td>{{tuserUser.email}}</td>
+                    <button type="button" class="btn btn-md btn-success" (click)= "updateuser(tuserUser.user_id)">Update</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-md btn-danger" (click) = "deleteuser(tuserUser.user_id)">Delete </button>
+
+                </tr>
+                </table>
+            </div>
+                
+                <button class="atu-btn-submit btn btn-info" (click) = "addUser()" >Add User</button>
+                
+            </div>
+        </div>
+    </div>
+    
+     

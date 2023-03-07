@@ -1,0 +1,12 @@
+package com.tourism.service;
+
+import java.util.List;
+import com.tourism.entity.Ticket;
+
+public longerface TicketService {
+	public  Ticket addTicket( Ticket h);
+	public List<Ticket> getAllTicket();		
+	public  Ticket getTicketById(long ticket_id);	
+	public  Ticket updateTicket(Ticket h);
+	public String deleteTicket(long ticket_id);
+}

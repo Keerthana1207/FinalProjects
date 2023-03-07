@@ -1,0 +1,45 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.tourism.dao.PlaceRepository;
+import com.tourism.entity.Place;
+@Service
+public class PlaceServiceImp implements  PlaceService{
+
+	@Autowired
+	PlaceRepository dao;
+	@Override
+	public Place addPlace(Place p) {
+		System.out.println("place added Succesfully "+p);
+		
+		return null;
+	}
+
+	@Override
+	public List<Place> getAllPlace() {
+		
+		return null;
+	}
+
+	@Override
+	public Place getPlaceById(long Place_id) {
+	
+		return null;
+	}
+
+	@Override
+	public Place updatePlace(Place p) {
+
+		return null;
+	}
+
+	@Override
+	public String deletePlace(long Place_id) {
+	
+		return null;
+	}
+
+}

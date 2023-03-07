@@ -1,0 +1,9 @@
+package com.tourism.service;
+
+import java.util.List;
+import com.tourism.entity.Package;
+
+public interface PackageService {
+	
+		
+}

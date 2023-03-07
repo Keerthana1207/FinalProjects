@@ -1,0 +1,58 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tourism.demo.dao.TransportRepository;
+import com.tourism.demo.entity.Transport;
+@Service
+public class TransportServiceImp implements TransportService {
+	@Autowired
+    TransportRepository dao;
+	
+	@Override
+	public Transport addTransport(Transport ts) {
+		System.out.println("employee added Succesfully "+ts);
+		ts.setTransport_name(ts.getTransport_name());
+		ts.setVtype(ts.getVtype());
+		ts.setTrans_desc(ts.getTrans_desc());
+		return dao.save(ts);
+	}
+
+	@Override
+	public List<Transport> getAllTransport() {
+		// TODO Auto-generated method stub
+		return dao.findAll();
+	}
+
+	@Override
+	public Transport getTransportById(long Transport_id) {
+		return this.dao.findById(Transport_id).orElse(null);
+	}
+
+	@Override
+	public Transport updateTransport(Transport ts) {
+		Transport existsTrans=dao.findById(ts.getTransportation_id()).orElse(null);
+		existsTrans.setTransport_name(ts.getTransport_name());
+		existsTrans.setVtype(ts.getVtype());
+		existsTrans.setTrans_desc(ts.getTrans_desc());
+		return dao.save(existsTrans);
+	}
+
+	@Override
+	public String deleteTransport(long Transport_id) {
+		Transport existsID=dao.findById(Transport_id).orElse(null);
+		if(existsID!=null)
+		{
+		dao.deleteById(Transport_id);
+		return "Employee deleted!!";
+		}
+		else
+		{
+		return "Employee does not exist!!";
+		}
+	}
+
+}

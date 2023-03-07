@@ -1,0 +1,51 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tourism.demo.dao.BookingRepository;
+import com.tourism.demo.entity.Booking;
+@Service
+public class BookingServiceImp  implements BookingService{
+
+
+	@Autowired
+	BookingRepository dao;
+	public Booking addBooking(Booking b) {
+		System.out.println("");
+		return dao.save(b);
+	}
+
+	@Override
+	public List<Booking> getAllBooking() {
+
+		return null;
+	}
+
+	@Override
+	public Booking getBookingById(long booking_id) {
+
+		return null;
+	}
+
+	@Override
+	public Booking updateBooking(Booking h) {
+
+		return null;
+	}
+
+	@Override
+	public String deleteBooking(long booking_id) {
+
+		return null;
+	}
+
+	@Override
+	public void deleteEmployee(long booking_id) {
+
+		
+	}
+
+}

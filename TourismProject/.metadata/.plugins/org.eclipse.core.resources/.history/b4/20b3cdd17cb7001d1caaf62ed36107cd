@@ -1,0 +1,32 @@
+package com.tourism.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.tourism.service.BookingService;
+import com.tourism.service.HotelService;
+import com.tourism.service.PackageService;
+import com.tourism.service.PlaceService;
+import com.tourism.service.UserService;
+
+@Controller
+public class HomeController {
+ @Autowired UserService uservice;
+ @Autowired BookingService bservice;
+ @Autowired HotelService hservice;
+ @Autowired PlaceService plservice;
+ @Autowired PackageService paservice;
+ 
+ @GetMapping("/")
+ public String homepage() {
+	 return "index";
+ }
+ 
+ @GetMapping("/login")
+ public String loginpage() {
+	 return "login";
+ }
+ 
+}

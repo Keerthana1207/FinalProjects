@@ -1,0 +1,62 @@
+package com.tourism.entity;
+
+import org.hibernate.validator.constraints.Length;
+import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Range;
+
+
+public class Place {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name ="place_id")
+	 private int hotel_id;
+	
+	@Column(name ="place_name")
+	private String place_name;
+	
+	@Column(name = "street")
+	@NotNull
+	private String street;
+	
+	@Column(name = "district")
+	@NotNull
+	private String district;
+	
+
+	@Column(name = "state")
+	@NotNull
+	@Length(min = 2, max = 2)
+	private String state;
+	
+	@Column(name = "zip" , length = 6)
+	@NotNull
+	@Pattern(regexp="(^$|[0-9]{6})")
+	private int zip;
+	
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			mappedBy = "bookingId",
+			fetch = FetchType.EAGER
+	)
+
+	private Set<Place> places;
+}
+

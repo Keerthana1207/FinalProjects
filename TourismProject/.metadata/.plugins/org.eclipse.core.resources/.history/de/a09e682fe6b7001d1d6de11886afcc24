@@ -1,0 +1,5 @@
+package com.tourism.demo.controller;
+
+public class UserController {
+
+}

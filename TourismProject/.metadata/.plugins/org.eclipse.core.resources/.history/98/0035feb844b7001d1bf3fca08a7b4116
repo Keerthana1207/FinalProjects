@@ -1,0 +1,39 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import com.tourism.entity.User;
+
+public class UserServiceImp implements UserService{
+
+	@Override
+	public User addUser(User h) {
+		
+		return null;
+	}
+
+	@Override
+	public List<User> getAllUser() {
+		
+		return null;
+	}
+
+	@Override
+	public User getUserById(int User_id) {
+		
+		return null;
+	}
+
+	@Override
+	public User updateUser(User h) {
+		
+		return null;
+	}
+
+	@Override
+	public String deleteUser(int User_id) {
+		
+		return null;
+	}
+
+}

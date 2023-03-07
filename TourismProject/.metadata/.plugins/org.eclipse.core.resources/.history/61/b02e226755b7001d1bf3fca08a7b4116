@@ -1,0 +1,104 @@
+package com.tourism.entity;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Range;
+
+@Entity
+@SequenceGenerator(name = "generator1", sequenceName = "gen1", initialValue = 100)
+public class Booking {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)	
+	@Column(name = "booking_id")
+	private Long booking_id;	
+
+	public enum RoomType{
+		STANDARD,
+		SUPERIOR,
+		DELUXE
+	}	
+	
+	public enum BookingStatus{
+		ACTIVE,
+		CANCELLED,
+		COMPLETE
+	}
+
+	private Date date;
+	
+
+	@Column(name = "PASSENGER_COUNT", length = 2)
+	@NotNull
+	@Range(min=1, max=12)
+	private short passengerCount=1;
+	
+	
+	@Column(name = "roomType")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private RoomType roomType= RoomType.STANDARD;
+	
+	@Column(name ="status")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private BookingStatus status = BookingStatus.ACTIVE;
+	
+	@Column(name ="price")
+	@NotNull
+	private int price;
+	
+	@Column(name = "booking_type")
+	private String booking_type;
+	
+	@Column(name = "booking_date")
+	private Date booking_date;
+	
+	@Column(name = "booking_desc")
+	private String booking_desc;
+		
+	
+	@ManyToOne(targetEntity=User.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="tour_userid",insertable=false,updatable=false)
+	private User userjoin;
+	
+	
+	@ManyToOne(targetEntity=User.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="tour_packgid",insertable=false,updatable=false)
+	private Package packagejoin;	
+	
+	@OneToMany(mappedBy="ticketjoin")
+	private Set<Ticket> tickets;	
+	
+	@OneToOne
+	@JoinColumn(name="payment_id",  referencedColumnName = "payment")
+	private Payment paymentInfo;
+
+
+	
+	public Booking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	
+	
+}

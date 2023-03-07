@@ -1,0 +1,43 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tourism.demo.dao.TicketRepository;
+import com.tourism.demo.entity.Ticket;
+@Service
+public class TicketServiceImp implements TicketService{
+
+	@Autowired TicketRepository dao;
+	@Override
+	public Ticket addTicket(Ticket t) {
+		System.out.println("Ticket added Succesfully "+t);
+		t.setDate(t.getDate());
+		return dao.save(t);
+	}
+
+	@Override
+	public List<Ticket> getAllTicket() {
+		return this.dao.findAll();
+	}
+
+	@Override
+	public Ticket getTicketById(long Ticket_id) {	
+		return this.dao.findById(Ticket_id).orElse(null);
+	}
+
+	@Override
+	public Ticket updateTicket(Ticket t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteTicket(long Ticket_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.tourism.demo.entity.TravelAgent;
+@Service
+public class TravelAgentServiceImp implements TravelAgentService{
+
+	@Override
+	public TravelAgent addTravelAgent(TravelAgent tr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TravelAgent> getAllTravelAgent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TravelAgent getTravelAgentById(long travelAgent_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TravelAgent updateTravelAgent(TravelAgent tr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteTravelAgent(long travelAgent_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+
+
+}

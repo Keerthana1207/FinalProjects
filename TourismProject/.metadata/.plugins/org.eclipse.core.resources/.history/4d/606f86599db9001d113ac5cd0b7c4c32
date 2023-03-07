@@ -1,0 +1,110 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.tourism.demo.dao.UserRepository;
+import com.tourism.demo.entity.User;
+@Service
+public class UserServiceImp implements UserService{
+
+	@Autowired 
+	UserRepository dao;
+	
+	public User findByname(String name) {
+		// TODO Auto-generated method stub
+		return dao.findByname(name) ;
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> loginUser(@Valid @RequestBody User  userData) {
+		User user = dao.findByname( userData.getName());
+
+		if (user.getPassword().equals( userData.getPassword())) {
+			User senduser=new User();
+			senduser.setUser_id(user.getUser_id());
+			senduser.setName(user.getName());
+			senduser.setGender(user.getGender());
+			senduser.setEmail(user.getEmail());
+			senduser.setPassword(user.getCity());	
+			senduser.setPhoneNumber(user.getPhoneNumber());
+			senduser.setDistrict(user.getDistrict());
+			senduser.setZip(user.getZip());
+			senduser.setState(user.getState());
+			
+			return ResponseEntity.ok(senduser);
+		} else {
+			return (ResponseEntity<?>) ResponseEntity.internalServerError();
+		}
+	}
+	@Override
+	public ResponseEntity<?> saveUser(User user) {
+		User u=dao.findByname(user.getName());
+		if(u!=null) {
+			return (ResponseEntity<?>) ResponseEntity.internalServerError();	
+		}
+		else {
+			dao.save(user);
+			return ResponseEntity.ok(user);
+		}	}
+@Override
+public User getuserById(int User_id) {
+		
+		return dao.findByuserId(User_id).orElseThrow(()->new exceptions.ResourceNotFoundException("Customer"));
+	}
+
+
+	@Override
+	public List<User> getAllUser() {		
+		return dao.findAll();
+	}
+
+	@Override
+	public User getUserById(long User_id) {		
+		return this.dao.findById(User_id).orElse(null);
+	}
+
+	@Override
+	public User updateUser(User u) {
+		User existingUser=dao.findById(u.getUser_id()).orElse(null);
+		  
+				existingUser.setName(u.getName());
+				existingUser.setGender(u.getGender());
+				existingUser.setPhoneNumber(u.getPhoneNumber());
+				existingUser.setEmail(u.getEmail());
+				existingUser.setPassword(u.getPassword());
+				existingUser.setCity(u.getCity());
+				existingUser.setDistrict(u.getDistrict());
+				existingUser.setZip(u.getZip());
+				existingUser.setState(u.getState());
+			
+		
+		return dao.save(existingUser);
+	}
+
+	@Override
+	public String deleteUser(long User_id) {
+		User existsID=dao.findById(User_id).orElse(null);
+		if(existsID!=null)
+		{
+		dao.deleteById(User_id);
+		return "User deleted!!";
+		}
+		else
+		{
+		return "User does not exist!!";
+		}
+	
+	}
+
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package com.tourism.entity;
+
+public class Place {
+
+}

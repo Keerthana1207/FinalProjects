@@ -1,0 +1,70 @@
+package com.tourism.entity;
+
+import java.sql.Date;
+import org.hibernate.annotations.Check;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
+
+@Entity
+
+@Check( constraints = "gst < net_charge")
+public class Payment{
+	@Column(name="Payment_id")
+	private long payment_id;
+	public enum PaymentMode{
+		CARD,
+		UPI,
+		INTERNET_BANKING,
+		WALLET
+	}
+	
+	public enum PaymentStatus{
+		SUCCESS,
+		PENDING,
+		FAILED
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "booking_id", referencedColumnName = "id")
+	private Booking bookingId;
+	
+	@Column(name="mode")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private PaymentMode mode= PaymentMode.CARD;
+	
+	
+	@Column(name = "net_charge")
+	@NotNull
+	private int netCharge=0;
+	
+	@Column
+	@NotNull
+	private int gst=0;
+	
+	@Column(name = "txn_id")
+	@NotNull
+	private String transactionId;
+	
+
+	@NotNull
+	@PastOrPresent
+	private Date date;
+	
+	@Column(name="status")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private PaymentStatus status;
+
+	
+	
+	
+}

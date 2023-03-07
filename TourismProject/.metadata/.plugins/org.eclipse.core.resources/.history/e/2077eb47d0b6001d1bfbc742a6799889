@@ -1,0 +1,14 @@
+package com.tourism.service;
+
+import java.util.List;
+import com.tourism.entity.Package;
+
+public interface PackageService {
+	public  Package addPackage( package p);
+	public List<Package> getAllPackage();		
+	public  Package getPackageById(int package_id);	
+	public  Package updatePackage(package p);
+	public String deletePackage(int package_id);
+	public void deleteEmployee(int package_id);
+	
+}

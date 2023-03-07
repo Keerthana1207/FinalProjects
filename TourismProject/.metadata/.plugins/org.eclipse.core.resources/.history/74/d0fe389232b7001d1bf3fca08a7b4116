@@ -1,0 +1,45 @@
+package com.tourism.service;
+
+import java.util.List;
+
+import com.tourism.entity.Booking;
+
+public class BookingServiceImp  implements BookingService{
+
+	@Override
+	public Booking addBooking(Booking b) {
+
+		return null;
+	}
+
+	@Override
+	public List<Booking> getAllBooking() {
+
+		return null;
+	}
+
+	@Override
+	public Booking getBookingById(int booking_id) {
+
+		return null;
+	}
+
+	@Override
+	public Booking updateBooking(Booking h) {
+
+		return null;
+	}
+
+	@Override
+	public String deleteBooking(int booking_id) {
+
+		return null;
+	}
+
+	@Override
+	public void deleteEmployee(int booking_id) {
+
+		
+	}
+
+}

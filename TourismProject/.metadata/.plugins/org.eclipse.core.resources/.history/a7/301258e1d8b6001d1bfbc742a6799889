@@ -1,0 +1,53 @@
+package com.tourism.entity;
+
+import java.security.Timestamp;
+import java.util.Date;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
+public class Ticket {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "seat_No")
+	private Long seat_No;
+	
+	@Column(name ="date")
+	@NotNull
+	private Date date;
+
+	@Column(name = "created_at", updatable = false)
+	@PastOrPresent
+	private Timestamp createdTimesatmp=null;
+
+	@Column(name = "last_update")
+	@PastOrPresent
+	private Timestamp updateTimestamp=null;
+
+	public Timestamp getCreatedTimesatmp() {
+	return createdTimesatmp;	 
+	}
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "seatno", referencedColumnName = "booking_id")
+	private Booking bookingId;
+	
+	@ManyToOne(targetEntity=Transport.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="booking_id",insertable = false,updatable = false)
+	private Transport bookingid;
+	
+	@ManyToOne(targetEntity=Transport.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="transport_id",insertable = false,updatable = false)
+	private Transport transportId;
+
+}

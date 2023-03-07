@@ -1,0 +1,13 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import com.tourism.demo.entity.User;
+
+public interface UserService {
+	public  User addUser( User h);
+	public List<User> getAllUser();		
+	public  User getUserById(int User_id);	
+	public  User updateUser(User h);
+	public String deleteUser(int User_id);
+}

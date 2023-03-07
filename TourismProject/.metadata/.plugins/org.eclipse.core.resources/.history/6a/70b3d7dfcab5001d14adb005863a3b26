@@ -1,0 +1,5 @@
+package com.tourism.dao;
+
+public interface PlaceRepository {
+
+}

@@ -1,0 +1,160 @@
+package com.tourism.demo.entity;
+
+import org.hibernate.validator.constraints.Length;
+import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Range;
+
+@Entity
+
+
+public class TravelAgent {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	
+	@Column(name ="travel_agent_id")
+	 private int travel_agent_id;
+	 
+	@Column(name ="travel_agent_name")
+	 private String travel_agent_name;
+	 
+	@Column(name ="travel_agent_mobile")
+	 private Long travel_agent_mobile;
+	 
+	@Column(name ="travel_agent_email")
+	 private String travel_agent_email;
+	 
+	@Column(name ="travel_agent_password")
+	 private int travel_agent_password;
+	 	 
+	 @Column(name = "street")
+	 @NotNull
+	 private String street;
+		
+	 @Column(name = "district")
+	 @NotNull
+	 private String district;
+		
+
+	 @Column(name = "state")
+	 @NotNull
+	 @Length(min = 2, max = 2)
+	 private String state;
+		
+	@Column(name = "zip" , length = 6)
+	@NotNull
+	@Pattern(regexp="(^$|[0-9]{6})")
+	private int zip;
+
+	public TravelAgent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TravelAgent(int travel_agent_id, String travel_agent_name, Long travel_agent_mobile,
+			String travel_agent_email, int travel_agent_password, @NotNull String street, @NotNull String district,
+			@NotNull @Length(min = 2, max = 2) String state, @NotNull @Pattern(regexp = "(^$|[0-9]{6})") int zip) {
+		super();
+		this.travel_agent_id = travel_agent_id;
+		this.travel_agent_name = travel_agent_name;
+		this.travel_agent_mobile = travel_agent_mobile;
+		this.travel_agent_email = travel_agent_email;
+		this.travel_agent_password = travel_agent_password;
+		this.street = street;
+		this.district = district;
+		this.state = state;
+		this.zip = zip;
+	}
+
+	public int getTravel_agent_id() {
+		return travel_agent_id;
+	}
+
+	public void setTravel_agent_id(int travel_agent_id) {
+		this.travel_agent_id = travel_agent_id;
+	}
+
+	public String getTravel_agent_name() {
+		return travel_agent_name;
+	}
+
+	public void setTravel_agent_name(String travel_agent_name) {
+		this.travel_agent_name = travel_agent_name;
+	}
+
+	public Long getTravel_agent_mobile() {
+		return travel_agent_mobile;
+	}
+
+	public void setTravel_agent_mobile(Long travel_agent_mobile) {
+		this.travel_agent_mobile = travel_agent_mobile;
+	}
+
+	public String getTravel_agent_email() {
+		return travel_agent_email;
+	}
+
+	public void setTravel_agent_email(String travel_agent_email) {
+		this.travel_agent_email = travel_agent_email;
+	}
+
+	public int getTravel_agent_password() {
+		return travel_agent_password;
+	}
+
+	public void setTravel_agent_password(int travel_agent_password) {
+		this.travel_agent_password = travel_agent_password;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getZip() {
+		return zip;
+	}
+
+	public void setZip(int zip) {
+		this.zip = zip;
+	}	
+	
+	
+}

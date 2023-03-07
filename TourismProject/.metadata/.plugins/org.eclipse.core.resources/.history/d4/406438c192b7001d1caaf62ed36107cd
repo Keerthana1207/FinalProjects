@@ -1,0 +1,6 @@
+package com.tourism.demo.service;
+
+public interface TransportService {
+
+	
+}

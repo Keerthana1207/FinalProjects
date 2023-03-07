@@ -1,0 +1,6 @@
+package com.tourism.demo.entity;
+
+public enum Gender1 {
+	MALE, FEMALE
+
+}

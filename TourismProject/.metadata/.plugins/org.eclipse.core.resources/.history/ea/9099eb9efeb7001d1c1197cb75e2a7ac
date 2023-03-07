@@ -1,0 +1,187 @@
+package com.tourism.demo.entity;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Range;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@SequenceGenerator(name = "generator1", sequenceName = "gen1", initialValue = 100)
+public class Booking {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "booking_id")
+	private Long booking_id;
+
+	public enum RoomType {
+		STANDARD, SUPERIOR, DELUXE
+	}
+
+	public enum BookingStatus {
+		ACTIVE, CANCELLED, COMPLETE
+	}
+
+	private Date date;
+
+	@Column(name = "PASSENGER_COUNT", length = 2)
+	@NotNull
+	@Range(min = 1, max = 12)
+	private int passengerCount = 1;
+
+	@Column(name = "roomType")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private RoomType roomType = RoomType.STANDARD;
+
+	@Column(name = "status")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private BookingStatus status = BookingStatus.ACTIVE;
+
+	@Column(name = "price")
+	@NotNull
+	private int price;
+
+	@Column(name = "booking_date")
+	private Date booking_date;
+
+	
+	  @ManyToOne(targetEntity=User.class,fetch=FetchType.EAGER)	  
+	  @JoinColumn(name="tour_userid",insertable=false,updatable=false) 
+	  private User userjoin;
+	  
+	  
+	@ManyToOne(targetEntity=TourPackage.class,fetch=FetchType.EAGER)  
+	  @JoinColumn(name="tour_packgid",insertable=false,updatable=false) private
+	  TourPackage packagejoin;
+	  
+	
+
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			mappedBy = "bookingjoin",
+			fetch = FetchType.EAGER
+	)	
+	private Set<Ticket> tickets;
+	
+	
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			mappedBy = "hoteljoin",
+			fetch = FetchType.EAGER
+	)	
+	private Set<Place> places;
+	
+	
+	
+	
+/*	 @OneToMany( cascade=CascadeType.MERGE)
+	 @JoinColumn(name="bookingjoin",insertable=false,updatable=false)
+	 @JsonIgnore
+	 private Set<Ticket> ticket;
+	*/
+
+	 @OneToOne
+	  @JoinColumn(name="tour_payid",insertable=false,updatable=false) 
+	  private Payment paymentjoin;
+	
+
+	public Booking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Booking(Long booking_id, Date date, @NotNull @Range(min = 1, max = 12) int passengerCount,
+			@NotNull RoomType roomType, @NotNull BookingStatus status, @NotNull int price,
+			Date booking_date) {
+		super();
+		this.booking_id = booking_id;
+		this.date = date;
+		this.passengerCount = passengerCount;
+		this.roomType = roomType;
+		this.status = status;
+		this.price = price;
+		this.booking_date = booking_date;
+
+	
+	}
+
+	public Long getBooking_id() {
+		return booking_id;
+	}
+
+	public void setBooking_id(Long booking_id) {
+		this.booking_id = booking_id;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getPassengerCount() {
+		return passengerCount;
+	}
+
+	public void setPassengerCount(int i) {
+		this.passengerCount = i;
+	}
+
+	public RoomType getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(RoomType roomType) {
+		this.roomType = roomType;
+	}
+
+	public BookingStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(BookingStatus status) {
+		this.status = status;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	public Date getBooking_date() {
+		return booking_date;
+	}
+
+	public void setBooking_date(Date booking_date) {
+		this.booking_date = booking_date;
+	}
+
+
+
+
+}

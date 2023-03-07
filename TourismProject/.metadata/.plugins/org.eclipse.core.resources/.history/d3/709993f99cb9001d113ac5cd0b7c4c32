@@ -1,0 +1,19 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.tourism.demo.entity.User;
+
+public interface UserService {
+	
+	User findByname(String name);
+	public ResponseEntity<?> saveUser(@RequestBody User user) ;
+	User updateuser(User user, int User_id);
+	List<User> getAllCustomers();
+	void deleteuser(int User_id);
+	User getuserById(int User_id);
+	User saveuser(User user);
+}

@@ -1,0 +1,19 @@
+package com.tourism.demo.service;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.tourism.demo.dao.TourPackageRepository;
+import com.tourism.demo.entity.TourPackage;
+@Service
+public class TourPackageServiceImp implements TourPackageService {
+
+	@Autowired
+	TourPackageRepository dao;
+
+
+
+
+
+
+}
